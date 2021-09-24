@@ -1,0 +1,14 @@
+.Header {
+  background-color: black;
+  padding: 16px;
+}
+
+.logoContainer {
+  width: clamp(106.36px, 130px, 130px);
+}
+
+.logo {
+    width: 100%;
+    object-fit: contain;
+}
+
