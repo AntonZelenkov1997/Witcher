@@ -1,16 +1,17 @@
-import { FC } from "react";
-import styles from './AppButton.scss'
+import { FC, } from "react";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import SecondaryButton from "../SecondaryButton/SecondaryButton";
 
 type AppButtonProps = {
-    type: "primary" | "secondary"
+    type: keyof typeof buttonTypes,
+    title: string
 }
 
-const AppButton: FC<AppButtonProps> = ({type}) => {
-    return (
-        <button className={styles.buttonContainer}>
-            Подключить подписку
-        </button>
-    )
+const AppButton: FC<AppButtonProps> = ({type, title}) => {
+
+    if (type === 'primary') return <PrimaryButton title={title} />
+    if (type === 'secondary') return <SecondaryButton title={title} />
+    return null
 }
 
 export default AppButton;

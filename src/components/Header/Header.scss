@@ -1,13 +1,27 @@
 .Header {
   background-color: black;
-  padding: 16px clamp(16px, 16px, 20px);
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 64px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 20px 120px;
+  }
 }
 
 .logoContainer {
-  width: clamp(106.36px, 130px, 130px);
+  width: 106.36px;
+  height: 36px;
+
+  @media screen and (min-width: 768px) {
+    width: 130px;
+    height: 44px;
+  }
 }
 
 .logo {

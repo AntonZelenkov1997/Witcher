@@ -1,7 +1,26 @@
-@import 'fonts.scss';
+@import "../assets/fonts/fonts.css";
+@import "../styles/variables.scss";
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+*,
+h1,
+h2 {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:global(.swiper) {
+  padding: 0 16px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 64px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    padding: 0 120px;
+  }
+}
+
+:global(.swiper-slide) {
+  width: auto;
 }

@@ -16,7 +16,12 @@ module.exports = {
     static: "./dist",
     port: isDev ? 8000 : 4000,
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      favicon: path.resolve("public", "favicon.png"),
+    }),
+  ],
   module: {
     rules: [
       {
@@ -35,6 +40,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
+        exclude: ["/src/styles/index.scss"],
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
@@ -55,27 +61,16 @@ module.exports = {
 
       {
         test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[local]--[hash:base64:5]",
-                mode: "local",
-              },
-            },
-          },
-        ],
+        use: ["style-loader", "css-loader"],
       },
 
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
