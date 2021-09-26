@@ -1,0 +1,30 @@
+.iconStyles {
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  position: relative;
+
+  &:hover {
+    :global(.socialIcon) {
+      fill: var(--var-btn-hover);
+    }
+
+    :global(.hoverBackground) {
+      z-index: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: white;
+      width: 80%;
+      height: 80%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

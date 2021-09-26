@@ -40,11 +40,11 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        exclude: ["/src/styles/index.scss"],
+        exclude: [/index.scss/, /node_modules/],
         use: [
-          // Creates `style` nodes from JS strings
+
           "style-loader",
-          // Translates CSS into CommonJS
+
           {
             loader: "css-loader",
             options: {
@@ -55,6 +55,15 @@ module.exports = {
             },
           },
           // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
+
+      {
+        test: /index.scss/,
+        use: [
+          "style-loader",
+          "css-loader",
           "sass-loader",
         ],
       },

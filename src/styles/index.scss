@@ -1,5 +1,7 @@
 @import "../assets/fonts/fonts.css";
 @import "../styles/variables.scss";
+@import "~leaflet/dist/leaflet.css";
+@import "~normalize.css/normalize.css";
 
 *,
 h1,
@@ -9,7 +11,7 @@ h2 {
   margin: 0;
 }
 
-:global(.swiper) {
+.swiper {
   padding: 0 16px;
 
   @media screen and (min-width: 768px) {
@@ -21,6 +23,12 @@ h2 {
   }
 }
 
-:global(.swiper-slide) {
+.swiper-slide {
   width: auto;
+}
+
+.socialIcon {
+  fill: white;
+  position: relative;
+  z-index: 2;
 }

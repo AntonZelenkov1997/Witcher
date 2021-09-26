@@ -1,0 +1,170 @@
+.modalPoliticsAndPrivacy {
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 24px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    padding: 0 180px;
+  }
+}
+
+.modalPoliticsAndPrivacy_initial {
+    display: none;
+}
+
+.modalPoliticsAndPrivacy_active {
+  animation-name: modalPoliticsAndPrivacy_active;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+
+  @keyframes modalPoliticsAndPrivacy_active {
+    0% {
+      opacity: 0;
+      z-index: 0;
+    }
+
+    100% {
+      opacity: 1;
+      z-index: 100;
+    }
+  }
+}
+
+.modalPoliticsAndPrivacy_inActive {
+  animation-name: modalPoliticsAndPrivacy_inActive;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+
+  @keyframes modalPoliticsAndPrivacy_inActive {
+    0% {
+      visibility: visible;
+      opacity: 1;
+      z-index: 100;
+    }
+
+    100% {
+      visibility: hidden;
+      opacity: 0;
+      z-index: 0;
+    }
+  }
+}
+
+.overlay {
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+}
+
+.lightBox {
+  z-index: 2;
+  position: relative;
+  padding: 24px 16px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    padding: 48px 40px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    padding: 56px 80px;
+  }
+}
+
+.headTitle {
+  font-family: Futura PT, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #253329;
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+.article {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    margin-top: 64px;
+  }
+}
+
+.articleTitle {
+  font-family: Futura PT, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+}
+
+.articleParagraph {
+  margin-top: 24px;
+  font-family: Futura PT, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  color: #000;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 28px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    margin-top: 34px;
+  }
+}
+
+.cancelButtonContainer {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+.cancelButton {
+  width: 100%;
+  height: 100%;
+}
