@@ -1,0 +1,12 @@
+.requestPage {
+  background-color: var(--var-bg-black);
+  padding: 34px 16px 56px;
+
+  @media screen and (min-width: 768px) {
+    padding: 43px 64px 56px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    padding: 62px 120px 88px;
+  }
+}

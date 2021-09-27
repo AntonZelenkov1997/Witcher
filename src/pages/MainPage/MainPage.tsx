@@ -1,16 +1,18 @@
 import { FC } from "react";
+import Header from "../../components/Header/Header";
 import MainSection from "../../components/MainSection/MainSection";
-import ModalPoliticsAndPrivacy from "../../components/ModalPoliticsAndPrivacy/ModalPoliticsAndPrivacy";
 import WitcherSection from "../../components/WitcherSection/WitcherSection";
 import "./MainPage.scss";
 
 const MainPage: FC = () => {
   return (
+    <>
+    <Header />
     <main>
       <MainSection />
       <WitcherSection />
-      <ModalPoliticsAndPrivacy />
     </main>
+    </>
   );
 };
 

@@ -32,3 +32,36 @@ h2 {
   position: relative;
   z-index: 2;
 }
+
+.disableBody {
+  overflow: hidden;
+}
+
+.inputForm {
+  background-color: var(--var-bg-input);
+  padding: 18px 20px;
+  outline: none;
+  border: none;
+
+  font-family: Futura PT, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: white;
+  width: 100%;
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+}
+
+.mt24 {
+  margin-top: 24px;
+}
+
+.inputFormTextFile {
+  span {
+    background-color: red;
+  }
+}

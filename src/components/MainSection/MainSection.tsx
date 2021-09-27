@@ -1,5 +1,4 @@
 import styles from "./MainSection.scss";
-import banner from "../../assets/images/witcherBanner.png";
 import bannerLarge from '../../assets/images/witherBannerLarge.png';
 import AppButton from "../AppButton/AppButton";
 
@@ -19,7 +18,7 @@ const MainSection = () => {
             мире, где люди часто оказываются куда коварнее чудовищ.
           </h2>
           <div className={styles.buttonContainer}>
-            <AppButton title="Смотреть сериал" type="primary" />
+            <AppButton title="Смотреть сериал" type="primary" onClick={undefined} />
           </div>
         </div>
       </div>

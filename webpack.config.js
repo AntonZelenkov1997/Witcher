@@ -15,6 +15,7 @@ module.exports = {
   devServer: {
     static: "./dist",
     port: isDev ? 8000 : 4000,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -42,7 +43,6 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         exclude: [/index.scss/, /node_modules/],
         use: [
-
           "style-loader",
 
           {
@@ -54,6 +54,16 @@ module.exports = {
               },
             },
           },
+
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+              },
+            },
+          },
+
           // Compiles Sass to CSS
           "sass-loader",
         ],
@@ -61,11 +71,7 @@ module.exports = {
 
       {
         test: /index.scss/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
 
       {

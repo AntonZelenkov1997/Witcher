@@ -1,4 +1,8 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, reaction } from "mobx";
+import {
+  bodyOverflowActive,
+  bodyOverflowInactive,
+} from "../../helpers/bodyOverflow";
 
 type politicsAndPrivacyModalType = {
   modalIsActive: boolean | null;
@@ -19,5 +23,16 @@ const politicsAndPrivacyModal = makeAutoObservable({
     this.modalIsActive = false;
   },
 } as politicsAndPrivacyModalType);
+
+reaction(
+  () => politicsAndPrivacyModal.GET_MODAL_IS_ACTIVE,
+  (GET_MODAL_IS_ACTIVE) => {
+    if (GET_MODAL_IS_ACTIVE) {
+      return bodyOverflowActive();
+    }
+
+    return bodyOverflowInactive();
+  }
+);
 
 export default politicsAndPrivacyModal;

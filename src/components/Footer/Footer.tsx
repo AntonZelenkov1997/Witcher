@@ -6,10 +6,14 @@ import witherLogo from "../../assets/images/logo.png";
 import IconSocial from "../IconSocial/IconSocial";
 import { Link } from "react-router-dom";
 import useStore from "../../hooks/useStore/useStore";
+import ModalPoliticsAndPrivacy from "../ModalPoliticsAndPrivacy/ModalPoliticsAndPrivacy";
 
 const Footer: FC = () => {
   const { politicsAndPrivacyModal } = useStore();
-  const activeModal = useCallback(() => politicsAndPrivacyModal.SET_MODAL_ACTIVE(), [])
+  const activeModal = useCallback(
+    () => politicsAndPrivacyModal.SET_MODAL_ACTIVE(),
+    []
+  );
 
   return (
     <footer className={styles.footer}>
@@ -20,10 +24,7 @@ const Footer: FC = () => {
           </div>
         </Link>
 
-        <div
-          className={styles.politicsBlockDesktop}
-          onClick={activeModal}
-        >
+        <div className={styles.politicsBlockDesktop} onClick={activeModal}>
           <div className={styles.politicsBlockLink}>
             <p>Политика обработки</p>
             <p>персональных данных</p>
@@ -72,14 +73,12 @@ const Footer: FC = () => {
           </IconSocial>
         </div>
       </div>
-      <div
-        className={styles.politicsBlockMobile}
-        onClick={activeModal}
-      >
+      <div className={styles.politicsBlockMobile} onClick={activeModal}>
         <div className={styles.politicsBlockMobileLink}>
           <p>Политика обработки персональных данных</p>
         </div>
       </div>
+      <ModalPoliticsAndPrivacy />
     </footer>
   );
 };

@@ -1,5 +1,5 @@
 .modalPoliticsAndPrivacy {
-  min-height: 100vh;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
 }
 
 .modalPoliticsAndPrivacy_initial {
-    display: none;
+  display: none;
 }
 
 .modalPoliticsAndPrivacy_active {
@@ -73,6 +73,8 @@
 }
 
 .lightBox {
+  max-height: 100%;
+  overflow: auto;
   z-index: 2;
   position: relative;
   padding: 24px 16px;

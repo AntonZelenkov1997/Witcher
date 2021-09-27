@@ -1,15 +1,26 @@
 import { observer } from "mobx-react-lite";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import useStore from "../../hooks/useStore/useStore";
 import styles from "./ModalPoliticsAndPrivacy.scss";
 
 const ModalPoliticsAndPrivacy: FC = () => {
   const { politicsAndPrivacyModal } = useStore();
+  const [scrollbarWidth, setScrollbarWidth] = useState<number>(0);
+
+  const getBodyScrollbarWidth = useCallback(() => {
+    setScrollbarWidth(window.innerWidth - document.documentElement.clientWidth);
+  }, []);
 
   const cancelModal = useCallback(
     () => politicsAndPrivacyModal.SET_MODAL_INACTIVE(),
     []
   );
+
+  useEffect(() => {
+    window.addEventListener("load", getBodyScrollbarWidth);
+
+    return () => window.removeEventListener("load", getBodyScrollbarWidth);
+  }, []);
 
   return (
     <aside
@@ -114,6 +125,13 @@ const ModalPoliticsAndPrivacy: FC = () => {
           </svg>
         </div>
       </div>
+      <div
+        style={{
+          minWidth: politicsAndPrivacyModal.GET_MODAL_IS_ACTIVE
+            ? scrollbarWidth
+            : 0,
+        }}
+      />
     </aside>
   );
 };
