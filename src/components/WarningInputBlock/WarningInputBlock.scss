@@ -1,0 +1,22 @@
+.warningInputBlock {
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+
+.warningInputBlockText {
+  position: absolute;
+  top: 4px;
+  opacity: 0.8;
+  color: var(--var-color-warning);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: Futura PT Book;
+}
+
+.disableWarningInputBlock {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
