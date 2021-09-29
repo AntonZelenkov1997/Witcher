@@ -38,3 +38,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.dangerStyle {
+  background-color: var(--var-input-danger);
+  transition: background-color 0.2s ease-in-out;
+}

@@ -11,6 +11,12 @@ h2 {
   margin: 0;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .swiper {
   padding: 0 16px;
 
@@ -38,6 +44,7 @@ h2 {
 }
 
 .inputForm {
+  transition: background-color 0.2s ease-in-out;
   background-color: var(--var-bg-input);
   padding: 18px 20px;
   outline: none;
@@ -53,6 +60,11 @@ h2 {
 
   &::placeholder {
     opacity: 0.4;
+  }
+
+  &_danger {
+    background-color: var(--var-input-danger);
+    transition: background-color 0.2s ease-in-out;
   }
 }
 

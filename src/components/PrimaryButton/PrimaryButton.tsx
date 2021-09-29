@@ -1,14 +1,9 @@
 import { FC } from "react"
 import styles from "./PrimaryButton.scss"
 
-type PrimaryButtonProps = {
-    title: string,
-    onClick: undefined | (() => void)
-}
-
-const PrimaryButton: FC<PrimaryButtonProps> = ({ title, onClick }) => {
+const PrimaryButton: FC<ButtonProps> = ({ title, onClick, typeButton }) => {
     return (
-        <button className={styles.buttonContainer} onClick={onClick}>
+        <button className={styles.buttonContainer} onClick={onClick} type={typeButton}>
             {title}
         </button>
     )

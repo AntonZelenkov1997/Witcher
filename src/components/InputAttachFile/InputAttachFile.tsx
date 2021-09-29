@@ -1,25 +1,37 @@
-import { FC, RefObject, useRef, useState } from "react";
+import { observer } from "mobx-react-lite";
+import { ChangeEventHandler, FC, RefObject, useRef, useState } from "react";
+import cs from "../../helpers/composeStyles";
+import useStore from "../../hooks/useStore/useStore";
 import WarningInputBlock from "../WarningInputBlock/WarningInputBlock";
 import styles from "./InputAttachFile.scss";
 
 type inputAttachFile = {
-  containerClassName: string;
+  containerClassName: string,
+  onGetFile: (file: File) => void
 };
 
-const InputAttachFile: FC<inputAttachFile> = ({ containerClassName }) => {
+const InputAttachFile: FC<inputAttachFile> = ({ containerClassName, onGetFile }) => {
   const fileRef: RefObject<HTMLInputElement> = useRef(null);
   const [photoName, setPhotoName] = useState("Прикрепите файл");
 
   const loadFile = () => {
     if (fileRef.current?.files?.length) {
       setPhotoName(fileRef.current.files[0].name);
+      onGetFile(fileRef.current.files[0])
     }
   };
+
+  const { validationForm } = useStore();
+
+  const dangerStyle: string = validationForm.GET_PROPERTY_ERROR("attachFile")
+    ? ""
+    : styles.dangerStyle;
+
 
   return (
     <>
       <div className={containerClassName}>
-        <div className={styles.attachBlock}>
+        <div className={cs(styles.attachBlock, dangerStyle)}>
           <label
             className={styles.attachBlockText}
             htmlFor="attachBlockLabelId"
@@ -60,9 +72,9 @@ const InputAttachFile: FC<inputAttachFile> = ({ containerClassName }) => {
           />
         </div>
       </div>
-      <WarningInputBlock title="Поле не заполненно" disabled={true} />
+      <WarningInputBlock title="Поле не заполненно" disabled={validationForm.GET_PROPERTY_ERROR("attachFile")} />
     </>
   );
 };
 
-export default InputAttachFile;
+export default observer(InputAttachFile);

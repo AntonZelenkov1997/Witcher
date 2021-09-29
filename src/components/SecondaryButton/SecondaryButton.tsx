@@ -1,14 +1,9 @@
 import { FC } from "react"
 import styles from "./SecondaryButton.scss"
 
-type SecondaryButtonProps = {
-    title: string,
-    onClick: undefined | (() => void)
-}
-
-const SecondaryButton: FC<SecondaryButtonProps> = ({ title, onClick }) => {
+const SecondaryButton: FC<ButtonProps> = ({ title, onClick, typeButton }) => {
     return (
-        <button className={styles.buttonContainer} onClick={onClick}>
+        <button className={styles.buttonContainer} onClick={onClick} type={typeButton}>
             {title}
         </button>
     )

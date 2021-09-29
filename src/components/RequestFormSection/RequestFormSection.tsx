@@ -1,56 +1,71 @@
-import { FC } from "react";
-import AppButton from "../AppButton/AppButton";
+import { observer } from "mobx-react-lite";
+import { FC, FormEventHandler, useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
-import InputAttachFile from "../InputAttachFile/InputAttachFile";
-import InputCheckboxBlock from "../InputCheckboxBlock/InputCheckboxBlock";
-import InputSelect from "../InputSelect/InputSelect";
-import InputTel from "../InputTel/InputTel";
-import InputTextArea from "../InputTextArea/InputTextArea";
-import InputTextEmail from "../InputTextEmail/InputTextEmail";
-import InputTextName from "../InputTextName/InputTextName";
-
+import useStore from "../../hooks/useStore/useStore";
+import FormContainer from "../FormContainer/FormContainer";
+import ThanksgivingBlock from "../ThanksgivingBlock/ThanksgivingBlock";
 import styles from "./RequestFormSection.scss";
+import "./RequestFormSection.global.scss";
+
+type submitFormType = FormEventHandler<HTMLFormElement>;
 
 const RequestFormSection: FC = () => {
+  const { validationForm, thanksgivingBlock } = useStore();
+
+  const [showFormContainer, setShowFormContainer] = useState(true);
+  const [showThanksgivingBlock, setShowThanksgivingBlock] = useState(false);
+
+  const submitForm: submitFormType = (e) => {
+    e.preventDefault();
+    validationForm.CHECK_FORM_ERRORS();
+
+    if (validationForm.GET_FORM_IS_PASSED) {
+      setShowFormContainer(false);
+
+      setTimeout(() => {
+        setShowThanksgivingBlock(false);
+      }, 7000);
+    }
+  };
+
   return (
     <section className={styles.requestFormSection}>
-      <form className={styles.requestForm}>
-        <h1 className={styles.heading}>Оставьте заявку</h1>
+      <form className={styles.requestForm} onSubmit={submitForm}>
+        <CSSTransition
+          in={showFormContainer}
+          timeout={300}
+          classNames="formContainer"
+          unmountOnExit
+          onEnter={() => setShowThanksgivingBlock(false)}
+          onExited={() => setShowThanksgivingBlock(true)}
+        >
+          <h1 className={styles.heading}>Оставьте заявку</h1>
+        </CSSTransition>
 
         <div className={styles.wrapperBlockContainer}>
           <div className={styles.leftBlockContainer}>
+            <CSSTransition
+              in={showFormContainer}
+              timeout={300}
+              classNames="formContainer"
+              unmountOnExit
+              onEnter={() => setShowThanksgivingBlock(false)}
+              onExited={() => setShowThanksgivingBlock(true)}
+            >
+              <FormContainer />
+            </CSSTransition>
 
-            <InputSelect />
-
-            <InputTextName
-              containerClassName={styles.inputTextName}
-              placeholder="Имя"
-            />
-
-            <div className={styles.wrapperFroEmailAndTel}>
-              <InputTextEmail
-                containerClassName={styles.inputTextEmail}
-                placeholder="Email"
-              />
-
-              <InputTel containerClassName={styles.inputTel} />
-            </div>
-
-            <InputTextArea containerClassName={styles.inputTextArea} />
-
-            <InputAttachFile containerClassName={styles.inputAttachFile} />
-
-            <InputCheckboxBlock
-              containerClassName={styles.inputCheckboxBlock}
-            />
-
-            <div className={styles.appButtonWrapper}>
-              <AppButton
-                type="primary"
-                title="Оставить заявку"
-                onClick={undefined}
-              />
-            </div>
+            <CSSTransition
+              in={showThanksgivingBlock}
+              timeout={300}
+              classNames="thanksgivingBlock"
+              unmountOnExit
+              onEnter={() => setShowFormContainer(false)}
+              onExited={() => setShowFormContainer(true)}
+            >
+              <ThanksgivingBlock />
+            </CSSTransition>
           </div>
 
           <div className={styles.rightBlockContainer}>
@@ -68,7 +83,7 @@ const RequestFormSection: FC = () => {
 
             <div className={styles.infoBlock}>
               <p className={styles.topText}>Часы работы</p>
-              <p className={styles.bottomText}>Пн-Пт с 10:00 до 22:002</p>
+              <p className={styles.bottomText}>Пн-Пт с 10:00 до 22:00</p>
             </div>
           </div>
         </div>
@@ -77,4 +92,4 @@ const RequestFormSection: FC = () => {
   );
 };
 
-export default RequestFormSection;
+export default observer(RequestFormSection);

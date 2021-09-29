@@ -6,6 +6,7 @@ import "./styles/index.scss";
 import Routes from "./routes/routes";
 import Footer from "./components/Footer/Footer";
 
+
 const App: FC = () => {
   return (
     <Router>

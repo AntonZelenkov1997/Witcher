@@ -2,17 +2,11 @@ import { FC } from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import SecondaryButton from "../SecondaryButton/SecondaryButton";
 
-type AppButtonProps = {
-  type: keyof typeof buttonTypes;
-  title: string;
-  onClick: undefined | (() => void);
-};
-
-const AppButton: FC<AppButtonProps> = ({ type, title, onClick }) => {
+const AppButton: FC<AppButtonProps> = ({ type, title, onClick = undefined, typeButton = "button" }) => {
   if (type === "primary")
-    return <PrimaryButton title={title} onClick={onClick} />;
+    return <PrimaryButton title={title} onClick={onClick} typeButton={typeButton} />;
   if (type === "secondary")
-    return <SecondaryButton title={title} onClick={onClick} />;
+    return <SecondaryButton title={title} onClick={onClick} typeButton={typeButton} />;
   return null;
 };
 

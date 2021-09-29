@@ -48,6 +48,11 @@
   background-color: var(--var-bg-input);
 }
 
+.dangerStyle {
+  background-color: var(--var-input-danger);
+  transition: background-color 0.2s ease-in-out;
+}
+
 /* On mouse-over, add a grey background color */
 .containerCheckbox:hover input ~ .checkmark {
   background-color: #ccc;
