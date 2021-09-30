@@ -20,18 +20,21 @@ type validationFormType = {
   GET_PROPERTY_ERROR: <K extends keyof validationErrorsObjectType>(
     key: K
   ) => validationErrorsObjectType[K];
+  SET_CLEAR_FORM: () => void
+};
+
+const initialValiadtionObject: validationObjectType = {
+  city: null,
+  name: null,
+  email: null,
+  phone: null,
+  textArea: null,
+  attachFile: null,
+  checkboxPrivacy: false,
 };
 
 const validationForm: validationFormType = makeAutoObservable({
-  valiadtionObject: {
-    city: null,
-    name: null,
-    email: null,
-    phone: null,
-    textArea: null,
-    attachFile: null,
-    checkboxPrivacy: false,
-  },
+  valiadtionObject: { ...initialValiadtionObject },
 
   objectErrors: {
     city: true,
@@ -91,6 +94,10 @@ const validationForm: validationFormType = makeAutoObservable({
     }
 
     return isPassed;
+  },
+
+  SET_CLEAR_FORM() {
+    this.valiadtionObject = { ...initialValiadtionObject };
   },
 } as validationFormType);
 
