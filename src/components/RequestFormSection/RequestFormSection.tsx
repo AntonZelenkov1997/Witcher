@@ -11,7 +11,7 @@ import "./RequestFormSection.global.scss";
 type submitFormType = FormEventHandler<HTMLFormElement>;
 
 const RequestFormSection: FC = () => {
-  const { validationForm, thanksgivingBlock } = useStore();
+  const { validationForm } = useStore();
 
   const [showFormContainer, setShowFormContainer] = useState(true);
   const [showThanksgivingBlock, setShowThanksgivingBlock] = useState(false);
@@ -22,6 +22,7 @@ const RequestFormSection: FC = () => {
 
     if (validationForm.GET_FORM_IS_PASSED) {
       setShowFormContainer(false);
+      validationForm.SET_CLEAR_FORM();
 
       setTimeout(() => {
         setShowThanksgivingBlock(false);
