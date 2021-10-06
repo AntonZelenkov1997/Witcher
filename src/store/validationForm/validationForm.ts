@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 type validationErrorsObjectType = Record<keyof validationObjectType, boolean>;
 
 type validationFormType = {
-  valiadtionObject: validationObjectType;
+  validationObject: validationObjectType;
   GET_VALIDATION: (
     key: keyof validationObjectType
   ) => validationObjectType[keyof validationObjectType];
@@ -23,7 +23,7 @@ type validationFormType = {
   SET_CLEAR_FORM: () => void
 };
 
-const initialValiadtionObject: validationObjectType = {
+const initialValidationObject: validationObjectType = {
   city: null,
   name: null,
   email: null,
@@ -34,7 +34,7 @@ const initialValiadtionObject: validationObjectType = {
 };
 
 const validationForm: validationFormType = makeAutoObservable({
-  valiadtionObject: { ...initialValiadtionObject },
+  validationObject: { ...initialValidationObject },
 
   objectErrors: {
     city: true,
@@ -52,14 +52,14 @@ const validationForm: validationFormType = makeAutoObservable({
 
   IS_VALIDATE(key) {
     if (key === "phone") {
-      return this.valiadtionObject[key]?.length === 11;
+      return this.validationObject[key]?.length === 11;
     }
 
-    return Boolean(this.valiadtionObject[key]);
+    return Boolean(this.validationObject[key]);
   },
 
   SET_VALIDATION(key, value) {
-    this.valiadtionObject[key] = value;
+    this.validationObject[key] = value;
   },
 
   SET_PROPERTY_ERROR(key, value) {
@@ -72,7 +72,7 @@ const validationForm: validationFormType = makeAutoObservable({
 
   CHECK_FORM_ERRORS() {
     const keys: Array<keyof validationObjectType> = Object.keys(
-      this.valiadtionObject
+      this.validationObject
     ) as Array<keyof validationObjectType>;
 
     keys.forEach((key) => {
@@ -87,7 +87,7 @@ const validationForm: validationFormType = makeAutoObservable({
     let key: keyof validationErrorsObjectType;
 
     for (key in this.objectErrors) {
-      if (this.objectErrors[key] === false) {
+      if (!this.objectErrors[key]) {
         isPassed = false;
         break;
       }
@@ -97,7 +97,7 @@ const validationForm: validationFormType = makeAutoObservable({
   },
 
   SET_CLEAR_FORM() {
-    this.valiadtionObject = { ...initialValiadtionObject };
+    this.validationObject = { ...initialValidationObject };
   },
 } as validationFormType);
 
