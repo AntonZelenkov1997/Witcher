@@ -1,16 +1,11 @@
 import { observer } from "mobx-react-lite";
-import { ChangeEventHandler, FC, RefObject, useRef, useState } from "react";
-import cs from "../../helpers/composeStyles";
+import { FC, RefObject, useRef, useState } from "react";
+import cs from "../../utils/composeStyles";
 import useStore from "../../hooks/useStore/useStore";
 import WarningInputBlock from "../WarningInputBlock/WarningInputBlock";
 import styles from "./InputAttachFile.scss";
 
-type inputAttachFile = {
-  containerClassName: string,
-  onGetFile: (file: File) => void
-};
-
-const InputAttachFile: FC<inputAttachFile> = ({ containerClassName, onGetFile }) => {
+const InputAttachFile: FC= () => {
   const fileRef: RefObject<HTMLInputElement> = useRef(null);
   const [photoName, setPhotoName] = useState("Прикрепите файл");
 
@@ -27,10 +22,11 @@ const InputAttachFile: FC<inputAttachFile> = ({ containerClassName, onGetFile })
     ? ""
     : styles.dangerStyle;
 
+  const onGetFile = (file: File) => validationForm.SET_VALIDATION("attachFile", file)
 
   return (
     <>
-      <div className={containerClassName}>
+      <div className={styles.inputAttachFileContainer}>
         <div className={cs(styles.attachBlock, dangerStyle)}>
           <label
             className={styles.attachBlockText}

@@ -1,4 +1,5 @@
 import styles from "./FormContainer.scss";
+
 import AppButton from "../AppButton/AppButton";
 import InputAttachFile from "../InputAttachFile/InputAttachFile";
 import InputCheckboxBlock from "../InputCheckboxBlock/InputCheckboxBlock";
@@ -7,64 +8,26 @@ import InputTel from "../InputTel/InputTel";
 import InputTextArea from "../InputTextArea/InputTextArea";
 import InputTextEmail from "../InputTextEmail/InputTextEmail";
 import InputTextName from "../InputTextName/InputTextName";
-import useStore from "../../hooks/useStore/useStore";
-import parsePhoneNumber from "../../helpers/parsePhoneNumber";
 
 const FormContainer = () => {
-  const { validationForm } = useStore();
 
   return (
     <div className={styles.formContainer}>
-      <InputSelect
-        onChange={(selectedValue) =>
-          validationForm.SET_VALIDATION("city", selectedValue.label)
-        }
-      />
+      <InputSelect />
 
-      <InputTextName
-        onChange={(e) => validationForm.SET_VALIDATION("name", e.target.value)}
-        containerClassName={styles.inputTextName}
-        placeholder="Имя"
-      />
+      <InputTextName />
 
       <div className={styles.wrapperForEmailAndTel}>
-        <InputTextEmail
-          onChange={(e) =>
-            validationForm.SET_VALIDATION("email", e.target.value)
-          }
-          containerClassName={styles.inputTextEmail}
-          placeholder="Email"
-        />
+        <InputTextEmail />
 
-        <InputTel
-          onChange={(e) => {
-            validationForm.SET_VALIDATION(
-              "phone",
-              parsePhoneNumber(e.target.value)
-            );
-          }}
-          containerClassName={styles.inputTel}
-        />
+        <InputTel />
       </div>
 
-      <InputTextArea
-        onChange={(e) =>
-          validationForm.SET_VALIDATION("textArea", e.target.value)
-        }
-        containerClassName={styles.inputTextArea}
-      />
+      <InputTextArea />
 
-      <InputAttachFile
-        onGetFile={(file) => validationForm.SET_VALIDATION("attachFile", file)}
-        containerClassName={styles.inputAttachFile}
-      />
+      <InputAttachFile />
 
-      <InputCheckboxBlock
-        onChange={(e) =>
-          validationForm.SET_VALIDATION("checkboxPrivacy", e.target.checked)
-        }
-        containerClassName={styles.inputCheckboxBlock}
-      />
+      <InputCheckboxBlock />
 
       <div className={styles.appButtonWrapper}>
         <AppButton typeButton="submit" type="primary" title="Оставить заявку" />

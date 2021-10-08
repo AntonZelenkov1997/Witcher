@@ -43,3 +43,8 @@
   background-color: var(--var-input-danger);
   transition: background-color 0.2s ease-in-out;
 }
+
+.inputAttachFileContainer {
+  margin-top: 24px;
+  position: relative;
+}

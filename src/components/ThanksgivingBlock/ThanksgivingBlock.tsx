@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useHistory } from "react-router";
-import cs from "../../helpers/composeStyles";
+import cs from "../../utils/composeStyles";
 import AppButton from "../AppButton/AppButton";
 
 import styles from "./ThanksgivingBlock.scss";

@@ -2,7 +2,7 @@ import { makeAutoObservable, reaction } from "mobx";
 import {
   bodyOverflowActive,
   bodyOverflowInactive,
-} from "../../helpers/bodyOverflow";
+} from "../../utils/bodyOverflow";
 
 type politicsAndPrivacyModalType = {
   modalIsActive: boolean | null;

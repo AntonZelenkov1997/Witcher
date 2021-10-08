@@ -1,5 +1,5 @@
 import { FC } from "react";
-import cs from "../../helpers/composeStyles";
+import cs from "../../utils/composeStyles";
 import styles from './WarningInputBlock.scss'
 
 type warningInputBlockProps = {

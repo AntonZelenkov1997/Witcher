@@ -3,14 +3,6 @@
   flex-direction: column;
 }
 
-.inputTextName {
-  margin-top: 24px;
-}
-
-.inputTextEmail {
-  margin-top: 24px;
-}
-
 .wrapperForEmailAndTel {
   display: flex;
   flex-direction: column;
@@ -19,29 +11,6 @@
     flex-direction: row;
     justify-content: space-between;
     column-gap: 24px;
-  }
-}
-
-.inputTel {
-  margin-top: 24px;
-}
-
-.inputTextArea {
-  margin-top: 24px;
-}
-
-.inputAttachFile {
-  margin-top: 24px;
-  position: relative;
-}
-
-.inputCheckboxBlock {
-  margin-top: 24px;
-  height: 32px;
-  display: flex;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 40px;
   }
 }
 

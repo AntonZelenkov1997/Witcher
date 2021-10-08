@@ -1,44 +1,38 @@
-import { observer } from "mobx-react-lite";
-import { ChangeEventHandler, FC } from "react";
+import {observer} from "mobx-react-lite";
+import {ChangeEventHandler, FC} from "react";
 
 import styles from "./InputTextEmail.scss";
 import useStore from "../../hooks/useStore/useStore";
 import WarningInputBlock from "../WarningInputBlock/WarningInputBlock";
 
-type InputTextEmailProps = {
-  containerClassName?: string;
-  placeholder: string;
-  onChange: ChangeEventHandler<HTMLInputElement> | undefined;
-};
+const InputTextEmail: FC = () => {
+    const {validationForm} = useStore();
 
-const InputTextEmail: FC<InputTextEmailProps> = ({
-  containerClassName,
-  placeholder,
-  onChange,
-}) => {
-  const { validationForm } = useStore();
+    const dangerStyle = validationForm.GET_PROPERTY_ERROR("email")
+        ? ""
+        : "inputForm_danger";
 
-  const dangerStyle = validationForm.GET_PROPERTY_ERROR("email")
-    ? ""
-    : "inputForm_danger";
+    const onChange: ChangeEventHandler<HTMLInputElement> = (e) =>
+        validationForm.SET_VALIDATION("email", e.target.value)
 
-  return (
-    <div>
-      <div className={containerClassName}>
-        <input
-          onChange={onChange}
-          placeholder={placeholder}
-          type="email"
-          className={`inputForm ${dangerStyle}`}
-        />
-      </div>
 
-      <WarningInputBlock
-        title="Поле не заполненно"
-        disabled={validationForm.GET_PROPERTY_ERROR("email")}
-      />
-    </div>
-  );
+    return (
+        <div>
+            <div className={styles.inputTextEmail}>
+                <input
+                    onChange={onChange}
+                    placeholder="Email"
+                    type="email"
+                    className={`inputForm ${dangerStyle}`}
+                />
+            </div>
+
+            <WarningInputBlock
+                title="Поле не заполненно"
+                disabled={validationForm.GET_PROPERTY_ERROR("email")}
+            />
+        </div>
+    );
 };
 
 export default observer(InputTextEmail);

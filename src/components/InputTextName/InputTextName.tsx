@@ -1,30 +1,23 @@
 import { ChangeEventHandler, FC } from "react";
+
 import useStore from "../../hooks/useStore/useStore";
 import WarningInputBlock from "../WarningInputBlock/WarningInputBlock";
 import { observer } from "mobx-react-lite";
+import styles from "./InputTextName.scss";
 
-type InputTextNameProps = {
-  containerClassName?: string;
-  placeholder: string;
-  onChange: ChangeEventHandler<HTMLInputElement>
-};
 
-const InputTextName: FC<InputTextNameProps> = ({
-  containerClassName,
-  placeholder,
-  onChange
-}) => {
+const InputTextName: FC = () => {
 
   const { validationForm } = useStore();
 
-  const ccn = containerClassName ?? ""
-
   const dangerStyle = validationForm.GET_PROPERTY_ERROR('name') ? "" : "inputForm_danger"
+
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => validationForm.SET_VALIDATION("name", e.target.value)
 
   return (
     <>
-      <div className={ccn}>
-        <input onChange={onChange} placeholder={placeholder} type="text" className={`inputForm ${dangerStyle}`} />
+      <div className={styles.inputTextName}>
+        <input onChange={onChange} placeholder="Имя" type="text" className={`inputForm ${dangerStyle}`} />
       </div>
 
       <WarningInputBlock title="Поле не заполненно" disabled={validationForm.GET_PROPERTY_ERROR('name')} />
