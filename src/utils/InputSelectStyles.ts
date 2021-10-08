@@ -22,7 +22,7 @@ const customStyles: StylesConfig<typeof options, true> = {
     backgroundColor: state.isFocused ? "red" : "none",
   }),
 
-  input: (provided, state) => ({
+  input: (provided) => ({
     ...provided,
     fontFamily: "Futura PT",
     fontStyle: "normal",
@@ -31,7 +31,7 @@ const customStyles: StylesConfig<typeof options, true> = {
     color: "white",
   }),
 
-  placeholder: (provided, state) => ({
+  placeholder: (provided) => ({
     ...provided,
     backgroundColor: "#2F2F2F",
     fontFamily: "Futura PT",
@@ -43,13 +43,13 @@ const customStyles: StylesConfig<typeof options, true> = {
     transition: "background-color .2s ease-in-out",
   }),
 
-  menu: (provided, state) => ({
+  menu: (provided) => ({
     ...provided,
     backgroundColor: "#2F2F2F",
     transition: "background-color .2s ease-in-out",
   }),
 
-  control: (provided, state) => ({
+  control: (provided) => ({
     ...provided,
     border: "none",
     backgroundColor: "#2F2F2F",
@@ -58,7 +58,7 @@ const customStyles: StylesConfig<typeof options, true> = {
     transition: "background-color .2s ease-in-out",
   }),
 
-  dropdownIndicator: (provided, state) => ({
+  dropdownIndicator: (provided) => ({
     ...provided,
     padding: "0 20px",
   }),
@@ -91,12 +91,12 @@ const customStyles: StylesConfig<typeof options, true> = {
     };
   },
 
-  indicatorSeparator: (provided, state) => ({
+  indicatorSeparator: (provided) => ({
     ...provided,
     display: "none",
   }),
 
-  singleValue: (provided, state) => ({
+  singleValue: (provided) => ({
     ...provided,
     backgroundColor: "#2F2F2F",
     fontFamily: "Futura PT",
@@ -107,7 +107,7 @@ const customStyles: StylesConfig<typeof options, true> = {
     transition: "background-color .2s ease-in-out",
   }),
 
-  valueContainer: (provided, state) => ({
+  valueContainer: (provided) => ({
     ...provided,
     backgroundColor: "#2F2F2F",
     padding: "18px 20px",
@@ -134,7 +134,7 @@ const customStyles: StylesConfig<typeof options, true> = {
 
 const customStylesDanger: typeof customStyles = {
   ...customStyles,
-  control: (provided, state) => ({
+  control: (provided) => ({
     ...provided,
     border: "none",
     backgroundColor: "var(--var-input-danger)",
@@ -143,14 +143,14 @@ const customStylesDanger: typeof customStyles = {
     transition: "background-color .2s ease-in-out",
   }),
 
-  valueContainer: (provided, state) => ({
+  valueContainer: (provided) => ({
     ...provided,
     backgroundColor: "var(--var-input-danger)",
     padding: "18px 20px",
     transition: "background-color .2s ease-in-out",
   }),
 
-  placeholder: (provided, state) => ({
+  placeholder: (provided) => ({
     ...provided,
     backgroundColor: "var(--var-input-danger)",
     fontFamily: "Futura PT",
@@ -162,7 +162,7 @@ const customStylesDanger: typeof customStyles = {
     transition: "background-color .2s ease-in-out",
   }),
 
-  singleValue: (provided, state) => ({
+  singleValue: (provided) => ({
     ...provided,
     transition: "background-color .2s ease-in-out",
     backgroundColor: "var(--var-input-danger)",
