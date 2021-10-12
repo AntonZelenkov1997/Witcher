@@ -1,1 +1,0 @@
-const CITIES_BASE_URI = 'http://geodb-free-service.wirefreethought.com/v1/geo/cities'
